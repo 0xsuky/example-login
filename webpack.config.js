@@ -6,7 +6,7 @@ const npmPackage = require('./package.json');
 
 module.exports = {
   mode: 'production',
-  entry: { index: './src/js/index.js' },
+  entry: { index: './src/js/main.js' },
   resolve: {
     alias:
       Object.fromEntries(
