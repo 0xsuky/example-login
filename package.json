@@ -1,0 +1,63 @@
+{
+  "name": "boilerplate",
+  "version": "0.0.1",
+  "description": "보일러플레이트 코드",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "monitor": "nodemon app.js",
+    "build": "webpack --config webpack.config.js",
+    "build_dev": "webpack --config webpack.config.dev.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0xsuky/boilerplate.git"
+  },
+  "author": "0xsuky@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/0xsuky/boilerplate/issues"
+  },
+  "homepage": "https://github.com/0xsuky/boilerplate#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "core-js": "^3.18.0",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.14.5",
+    "@babel/preset-env": "^7.15.6",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.2.2",
+    "babel-preset-env": "^1.7.0",
+    "css-loader": "^6.3.0",
+    "eslint": "^7.32.0",
+    "eslint-config-node": "^4.1.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "html-webpack-plugin": "^5.3.2",
+    "jest": "^27.2.1",
+    "mini-css-extract-plugin": "^2.3.0",
+    "module-alias": "^2.2.2",
+    "node-sass": "^6.0.1",
+    "nodemon": "^2.0.12",
+    "prettier": "^2.4.1",
+    "sass-loader": "^12.1.0",
+    "style-loader": "^3.3.0",
+    "webpack": "^5.53.0",
+    "webpack-cli": "^4.8.0"
+  },
+  "_moduleAliases": {
+    "@root": ".",
+    "@config": "config",
+    "@static": "static",
+    "@src": "src",
+    "@css": "src/css",
+    "@html": "src/html",
+    "@img": "src/img",
+    "@js": "src/js"
+  }
+}
