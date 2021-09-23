@@ -1,0 +1,59 @@
+@import 'common.scss';
+@import 'variable.scss';
+@import 'mixin.scss';
+
+.article__block {
+  width: 500px;
+
+  &.cookie-info {
+    height: auto;
+
+    p {
+      margin: 10px 0px;
+    }
+
+    .cookie-info__title {
+      color: $black;
+      font-size: 30px;
+    }
+
+    .cookie-info__remark {
+      color: $gray;
+    }
+
+    .cookie-info__content-div {
+      margin: 20px 0px;
+      padding: 10px 10px;
+      height: 200px;
+      @include solid-border(10px, $gray);
+    }
+  }
+
+  &.login-form {
+    height: 100px;
+    .login-form__form {
+      @include flex(row, space-between, center);
+    }
+
+    .login-form__wrap {
+      @include flex(column, center, center);
+
+      input[type='text'],
+      input[type='password'] {
+        margin: 10px 0px;
+        border: none;
+        background-color: inherit;
+        font-size: 20px;
+      }
+
+      .login-form__submit {
+        margin: 5px 0px;
+        width: 100%;
+
+        input {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+@charset 'utf-8';
+
+@import 'variable.scss';
+@import 'mixin.scss';
+
+body {
+  padding: 20px;
+}
+
+h1 {
+  font-size: 2em;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+article {
+  margin: 30px 0px;
+  padding: 30px 30px;
+  @include solid-border(10px, $gray);
+}

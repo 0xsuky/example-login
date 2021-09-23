@@ -58,6 +58,9 @@
     "@css": "src/css",
     "@html": "src/html",
     "@img": "src/img",
-    "@js": "src/js"
+    "@js": "src/js",
+    "@common": "src/js/common",
+    "@components": "src/js/components",
+    "@core": "src/js/core"
   }
 }
