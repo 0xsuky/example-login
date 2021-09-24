@@ -65,10 +65,10 @@ export default class LoginForm extends Component {
       });
       const { msg } = await res.json();
       if (msg === 'login success') {
-        $('cookie-info__content').text = documet.cookie;
-        alert('회원가입에 성공했습니다.');
+        $('.cookie-info__content').textContent = document.cookie;
+        alert('로그인에 성공했습니다.');
       } else {
-        alert('회원가입에 실패했습니다.');
+        alert('로그인에 실패했습니다.');
       }
     } catch (err) {
       console.error(err);
