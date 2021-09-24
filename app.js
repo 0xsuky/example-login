@@ -5,8 +5,13 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
-// 라우터 정의
-// ex) const indexRouter = require('/routes/index.js');
+const { sequelize } = require('./models/index.js');
+
+(async () => {
+  sequelize.sync({ force: false });
+})();
+
+const apiRouter = require('./routes/api.js');
 
 const app = express();
 app.set('port', process.env.PORT || 3000);
@@ -19,8 +24,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'dist')));
 app.use('/static', express.static(path.join(__dirname, 'static')));
 
-// 라우터 할당
-// ex) app.use('/', indexRouter);
+app.use('/api', apiRouter);
 
 app.use((req, res, next) => {
   const error = new Error(`${req.method} ${req.url} 라우터가 없습니다.`);
