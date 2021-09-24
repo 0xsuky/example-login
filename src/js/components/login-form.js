@@ -1,5 +1,6 @@
 import Component from '@core/component.js';
 import { $ } from '@common/util.js';
+import { SERVER_URL } from '@common/constant.js';
 
 export default class LoginForm extends Component {
   template() {
@@ -45,32 +46,64 @@ export default class LoginForm extends Component {
       e.preventDefault();
       this.#jwtSubmit();
     });
-    this.addEvent('click', '.join-submit', (e) => {
+    this.addEvent('click', '.join-submit', async (e) => {
       e.preventDefault();
-      this.#joinSubmit();
+      await this.#joinSubmit();
     });
   }
 
-  #cookieSessionSubmit() {
+  async #cookieSessionSubmit() {
     const id = $('.login-form__id');
     const pw = $('.login-form__pw');
-    console.log(id, pw);
+    try {
+      const res = await fetch(SERVER_URL + '/api/session-cookie', {
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ id: id.value, pw: pw.value }),
+      });
+      const { msg } = await res.json();
+      if (msg === 'login success') {
+        $('cookie-info__content').text = documet.cookie;
+        alert('회원가입에 성공했습니다.');
+      } else {
+        alert('회원가입에 실패했습니다.');
+      }
+    } catch (err) {
+      console.error(err);
+    }
     id.value = '';
     pw.value = '';
   }
 
-  #jwtSubmit() {
+  async #jwtSubmit() {
     const id = $('.login-form__id');
     const pw = $('.login-form__pw');
-    console.log(id, pw);
     id.value = '';
     pw.value = '';
   }
 
-  #joinSubmit() {
+  async #joinSubmit() {
     const id = $('.login-form__id');
     const pw = $('.login-form__pw');
-    console.log(id, pw);
+    try {
+      const res = await fetch(SERVER_URL + '/api/user', {
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ id: id.value, pw: pw.value }),
+      });
+      const { msg } = await res.json();
+      if (msg === 'join success') {
+        alert('회원가입에 성공했습니다.');
+      } else {
+        alert('회원가입에 실패했습니다.');
+      }
+    } catch (err) {
+      console.error(err);
+    }
     id.value = '';
     pw.value = '';
   }

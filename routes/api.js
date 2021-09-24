@@ -9,12 +9,13 @@ const router = express.Router();
 const sessionStorage = {};
 
 router.post('/user', async (req, res, next) => {
+  console.log(req.body);
   const { id, pw } = req.body;
   try {
     if (await makeUser({ id, pw })) {
-      res.send('join success');
+      res.json({ msg: 'join success' });
     } else {
-      res.send('join fail');
+      res.json({ msg: 'join fail' });
     }
   } catch (err) {
     next(err);
@@ -29,9 +30,9 @@ router.post('/session-cookie', async (req, res, next) => {
       const sessionId = uuid.v4();
       res.cookie(SESSION_NAME, sessionId, SESSION_CONFIG);
       sessionStorage[sessionId] = {};
-      res.send('login success');
+      res.json({ msg: 'login success' });
     } else {
-      res.send('login fail');
+      res.json({ msg: 'login fail' });
     }
   } catch (err) {
     console.error(err);
@@ -44,9 +45,9 @@ router.post('/jwt', async (req, res, next) => {
   try {
     const user = await findUser({ id, pw });
     if (await bcrypt.compare(pw, user.userpw)) {
-      res.send('login success');
+      res.json({ msg: 'login success' });
     } else {
-      res.send('login fail');
+      res.json({ msg: 'login fail' });
     }
   } catch (err) {
     next(err);
