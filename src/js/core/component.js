@@ -1,30 +1,38 @@
 import { $all } from '@common/util.js';
+import { observable, observe } from '@core/observer.js';
 
 export default class Component {
   $target;
-  $props;
-  $state;
+  props;
+  state;
 
-  constructor($target, $props) {
+  constructor($target, props) {
     this.$target = $target;
-    this.$props = $props;
+    this.props = props;
     this.setup();
-    this.setEvent();
-    this.render();
   }
 
-  setup() {}
+  setup() {
+    this.state = observable(this.initState());
+    observe(() => {
+      this.render();
+      this.setEvent();
+      this.mounted();
+    });
+  }
   mounted() {}
+  initState() {
+    return {};
+  }
   template() {
     return '';
   }
   render() {
     this.$target.innerHTML = this.template();
-    this.mounted();
   }
   setEvent() {}
   setState(newState) {
-    this.$state = { ...this.$state, ...newState };
+    this.state = { ...this.state, ...newState };
     this.render();
   }
   addEvent(eventType, selector, callback) {
