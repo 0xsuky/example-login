@@ -39,18 +39,4 @@ router.post('/session-cookie', async (req, res, next) => {
   }
 });
 
-router.post('/jwt', async (req, res, next) => {
-  const { id, pw } = req.body;
-  try {
-    const user = await findUser({ id, pw });
-    if (await bcrypt.compare(pw, user.userpw)) {
-      res.send('login success');
-    } else {
-      res.send('login fail');
-    }
-  } catch (err) {
-    next(err);
-  }
-});
-
 module.exports = router;
