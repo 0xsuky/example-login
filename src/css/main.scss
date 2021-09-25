@@ -29,6 +29,19 @@
     }
   }
 
+  &.log-board {
+    height: 100px;
+
+    .log-board__block {
+      height: 100px;
+      overflow-y: scroll;
+    }
+
+    .log-board__log {
+      margin: 3px 0px;
+    }
+  }
+
   &.login-form {
     height: 100px;
     .login-form__form {
